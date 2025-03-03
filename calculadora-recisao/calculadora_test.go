@@ -1,4 +1,4 @@
-package main_test
+package calculadorarecisao_test
 
 import (
 	"fmt"
@@ -34,6 +34,35 @@ func TestSaldoSalário(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("Teste de saldo Salário: %v", tc.salário), func(t *testing.T) {
 			got := calculadora.SaldoSalário(tc.salário, tc.dataContratação, tc.dataDemissao, tc.avisoPrevio)
+			want := tc.saldo
+
+			assertFloatEqual(t, got, want)
+		})
+	}
+}
+
+func TestSaldoFérias(t *testing.T) {
+	testCases := []struct {
+		salário         float64
+		saldo           float64
+		dataContratação time.Time
+		dataDemissao    time.Time
+		avisoPrevio     calculadora.AvisoPrevio
+	}{
+		{1000, 1416.67, calculadora.Date(2024, 1, 1), calculadora.Date(2025, 1, 1), calculadora.Trabalhado},
+		{2000, 2833.33, calculadora.Date(2024, 1, 4), calculadora.Date(2025, 1, 4), calculadora.Trabalhado},
+		{1500, 2000, calculadora.Date(2024, 1, 1), calculadora.Date(2024, 11, 1), calculadora.Trabalhado},
+		{1500, 2000, calculadora.Date(2024, 1, 1), calculadora.Date(2024, 12, 1), calculadora.Trabalhado},
+		{1500, 4166.67, calculadora.Date(2024, 1, 1), calculadora.Date(2026, 1, 1), calculadora.Trabalhado},
+		{4500, 6000, calculadora.Date(2024, 1, 1), calculadora.Date(2024, 11, 30), calculadora.Trabalhado},
+		{4500, 5500, calculadora.Date(2024, 1, 1), calculadora.Date(2024, 11, 30), calculadora.Indenizado},
+		{4500, 5500, calculadora.Date(2024, 1, 1), calculadora.Date(2024, 11, 30), calculadora.Dispensado},
+		{4500, 5500, calculadora.Date(2024, 1, 1), calculadora.Date(2024, 11, 30), calculadora.NãoCumprido},
+	}
+
+	for _, tc := range testCases {
+		t.Run(fmt.Sprintf("Teste de saldo de Férias: %+v", tc.salário), func(t *testing.T) {
+			got := calculadora.SaldoFérias(tc.salário, tc.dataContratação, tc.dataDemissao, tc.avisoPrevio)
 			want := tc.saldo
 
 			assertFloatEqual(t, got, want)
