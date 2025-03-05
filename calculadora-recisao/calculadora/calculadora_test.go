@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	calculadora "github.com/EdmilsonRodrigues/calculadora-financeira/calculadora-recisao"
+	calculadora "github.com/EdmilsonRodrigues/calculadora-financeira/calculadora-recisao/calculadora"
 )
 
 func TestSaldoSalário(t *testing.T) {
