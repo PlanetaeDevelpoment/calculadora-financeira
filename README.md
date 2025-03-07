@@ -1,4 +1,4 @@
-# calculadorafinanceira-frontend
+# Calculadora Financeira
 
 This repository contains the code for [www.calculadorafinanceira.site](www.calculadorafinanceira.site), a website dedicated to providing various financial calculators. **The site is down at the moment**
 
