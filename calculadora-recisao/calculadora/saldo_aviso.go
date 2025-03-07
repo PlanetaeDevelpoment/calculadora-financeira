@@ -1,7 +1,9 @@
 package calculadorarecisao
 
-
-func SaldoAviso(salario float64, avisoPrevio AvisoPrevio) (aviso float64) {
+func CalcularSaldoAviso(salario float64, avisoPrevio AvisoPrevio, justaCusa bool) (aviso float64) {
+	if justaCusa {
+		return
+	}
 	switch avisoPrevio {
 	case Trabalhado:
 		return
@@ -9,5 +11,5 @@ func SaldoAviso(salario float64, avisoPrevio AvisoPrevio) (aviso float64) {
 		return -salario
 	default:
 		return salario
-	}	
+	}
 }

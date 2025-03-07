@@ -34,7 +34,7 @@ var (
 	}
 )
 
-func SaldoSalário(salário float64, dataContratação, dataDemissao time.Time, avisoPrevio AvisoPrevio) (saldo float64) {
+func CalcularSaldoSalário(salário float64, dataContratação, dataDemissao time.Time, avisoPrevio AvisoPrevio) (saldo float64) {
 	porcentagemSaldo := getPorcentagemSaldo(dataContratação, dataDemissao, avisoPrevio)
 	salarioBruto := salário * porcentagemSaldo
 	saldo = retirarDescontos(salarioBruto)
