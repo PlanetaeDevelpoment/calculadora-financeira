@@ -1,8 +1,9 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
-	"fmt"
+	"log"
 
 	"github.com/EdmilsonRodrigues/calculadora-financeira/calculadora-recisao/calculadora"
 	"github.com/aws/aws-lambda-go/events"
@@ -10,23 +11,27 @@ import (
 )
 
 func main() {
-	// Make the handler available for Remote Procedure Call by AWS Lambda
 	lambda.Start(handler)
 }
 
-func handler(request events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
-	var requisicao calculadorarecisao.RequisiçãoRecisão
-	err := json.Unmarshal([]byte(request.Body), &requisicao)
-	if err != nil {
-		return events.APIGatewayProxyResponse{
-			Body:       "Invalid JSON payload",
-			StatusCode: 400,
-		}, nil
-	}
 
-	result := calculadorarecisao.CalcularRecisão(requisicao)
-	return events.APIGatewayProxyResponse{
-		Body:       fmt.Sprintf("%v", result),
-		StatusCode: 200,
-	}, nil
+
+func handler(ctx context.Context, event calculadorarecisao.RequisiçãoRecisão) (events.APIGatewayProxyResponse, error) {
+	log.Println("Received event:", event)
+	result := calculadorarecisao.CalcularRecisão(event)
+    jsonResult, err := json.Marshal(result)
+    if err != nil {
+		log.Println("Error marshalling JSON:", err)
+        return events.APIGatewayProxyResponse{
+            Body:       "Error marshalling JSON",
+            StatusCode: 500,
+        }, nil
+    }
+    return events.APIGatewayProxyResponse{
+        Body:       string(jsonResult),
+        StatusCode: 200,
+        Headers: map[string]string{
+            "Content-Type": "application/json",
+        },
+    }, nil
 }
