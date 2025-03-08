@@ -6,6 +6,7 @@ on:
     types: [completed]
 jobs:
   deploy_zip:
+    needs: build
     name: deploy lambda function
     runs-on: ubuntu-latest
     steps:
