@@ -1,0 +1,26 @@
+name: Deploy To Lambda
+
+on:
+  workflow_run:
+    workflows: ["Teste Calculadora Recisão"]
+    types: [completed]
+jobs:
+  deploy_zip:
+    name: deploy lambda function
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: deployment
+          path: deployment.zip
+
+      - name: default deploy
+        uses: appleboy/lambda-action@v0.2.0
+        with:
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: ${{ secrets.AWS_REGION }}
+          function_name: gorush
+          zip_file: deployment.zip
+          dry_run: true

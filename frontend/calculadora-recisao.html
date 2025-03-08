@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.21.0.min.css" />
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Calculadora Financeira - Calculadora de Recisão</title>
+</head>
+
+<body>
+    <app-header></app-header>
+    <div class="row--25-75">
+        <div class="col">
+            <h1>Calculadora de Recisão</h1>
+            <form>
+                <fieldset>
+                    <label for="salário">Último Salário</label>
+                    <input placeholder="1509.00" id="salário" name="salário" type="number" step="0.01"
+                        autocomplete="given-name">
+                    <label for="contratação">Data de Contratação</label>
+                    <input type="date" id="contratação" name="contratação">
+                    <label for="demissão">Data de Demissão</label>
+                    <input type="date" id="demissão" name="demissão">
+                    <label for="aviso">Aviso Prévio</label>
+                    <select name="aviso" id="aviso">
+                        <option value="" disabled="disabled" selected="">Select an option</option>
+                        <option value="0">Trabalhado</option>
+                        <option value="1">Indenizado pelo Empregador</option>
+                        <option value="2">Dispensado pelo Empregador</option>
+                        <option value="3">Não Cumprido pelo Funcionário</option>
+                    </select>
+                    <!-- <p class="p-form-help-text" id="aviso-messangem-ajuda">
+                        Trabalhado: O funcionário trabalhou até o último dia de trabalho. <br/>
+                        Indenizado pelo Empregador: O funcionário recebeu o aviso prévio indenizado pelo empregador. <br/>
+                        Dispensado pelo Empregador: O funcionário não cumpriu o aviso prévio, mas o empregador o dispensou. <br/>
+                        Não Cumprido pelo Funcionário: O funcionário não cumpriu o aviso prévio, mas o empregador não o dispensou. <br/>
+                    </p> -->
+
+                    <label for="motivo">Motivo do Encerramento</label>
+                    <select name="motivo" id="motivo">
+                        <option value="" disabled="disabled" selected="">Select an option</option>
+                        <option value="4">Demissão Sem Justa Causa</option>
+                        <option value="5">Demissão Com Justa Causa</option>
+                        <option value="6">Funcionário Pediu Demissão</option>
+                    </select>
+
+                    <label class="p-checkbox">
+                        <input type="checkbox" id="férias-vencidas" aria-labelledby="férias-vencidas"
+                            class="p-checkbox__input">
+                        <span class="p-checkbox__label">Possui Férias Vencidas</span>
+                    </label>
+                    <button type="submit" id="submit" name="submit">Submit</button>
+                </fieldset>
+            </form>
+            <section id="resultados">
+                <table aria-label="Vanilla framework table example">
+                    <thead>
+                        <tr>
+                            <th colspan="2">Saldos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Saldo de Salário</th>
+                            <td id="saldo-salário"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Salso de Férias</th>
+                            <td id="saldo-férias"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Aviso Prévio</th>
+                            <td id="saldo-aviso"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Saldo 13º Salário</th>
+                            <td id="saldo-13"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Saldo FGTS</th>
+                            <td id="saldo-fgts"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Total</th>
+                            <td id="saldo-total"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <app-footer></app-footer>
+    <script type="module" src="http://0.0.0.0:8000/scripts/main.js"></script>
+    <script type="module" src="http://0.0.0.0:8000/scripts/recisao.js"></script>
+</body>
+
+</html>

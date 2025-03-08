@@ -1,7 +1,8 @@
 const tags = {
-    'app-header': 'header.html'
+    'app-header': 'header.html',
+    'app-footer': 'footer.html'
 }
-const apiUrl = 'http://0.0.0.0:8000/';
+const apiUrl = 'http://0.0.0.0:8000';
 
 function loadPage() {
     for (const tag in tags) {
@@ -16,8 +17,7 @@ async function inputTemplate(tag) {
 } 
 
 async function fetchTemplate(template) {
-    return await fetch(`${apiUrl}templates/${template}`).then(response => response.text()).then(html => {
-        console.log(html);
+    return await fetch(`${apiUrl}/templates/${template}`).then(response => response.text()).then(html => {
         return html;
     }).catch(error => {
         console.log('Error loading template', error);

@@ -5,11 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.21.0.min.css" />
+    <link rel="stylesheet" href="styles/styles.css">
     <title>Calculadora Financeira</title>
 </head>
 
 <body>
-    <app-header />
+    <app-header></app-header>
+    <main class="vanilla-grid">
+        <div class="row--25-75">
+            <div class="col">
+                <section>
+                    <h1>Cálculos Financeiros</h1>
+                    <p>
+                        Bem-vindo ao nosso site de cálculos financeiros!
+                        Aqui, Aqui você encontrará ferramentas gerais para
+                        realizar cálculos comuns no planejamento financeiro,
+                        como cálculos de investimentos, de recisão trabalhista,
+                        de financiamentos, entre outros.
+                    </p>
+                    <p>
+                        Navegue pelas seções abaixo para acessar as ferramentas.
+                        O site está em fase de desenvolvimento e estamos aumentando
+                        constantemente o número de cálculos disponíveis.
+                    </p>
+                    <p>
+                        <strong>Quer sugerir uma nova ferramenta ou achou um erro?</strong> <a
+                            href="https://github.com/PlanetaeDevelpoment/calculadora-financeira/issues">Crie uma
+                            issue!</a>
+                        <br />
+                        <strong>Quer criar uma nova ferramenta ou contribuir para o projeto?</strong> <a
+                            href="https://github.com/PlanetaeDevelpoment/calculadora-financeira">Envie seu Pull
+                            Request!</a>
+                        <br />
+                        <strong>Quer subir sua própria versão do site?</strong> <a
+                            href="https://github.com/PlanetaeDevelpoment/calculadora-financeira">Faça um fork!</a>
+                    </p>
+                </section>
+                <section>
+                    <h2>Nossos Cálculos</h2>
+                    <ul>
+                        <li><a href="./calculadora-recisao.html">Cálculo de Recisão</a></li>
+                        <li><a style="color: black;" class="disabled" href="./calculadora-investimentos.html">Cálculo de
+                                Investimentos (Em desenvolvimento)</a></li>
+                        <li><a style="color: black;" class="disabled" href="./calculadora-financiamento.html">Cálculo de
+                                Financiamento (Em desenvolvimento)</a></li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </main> <app-footer></app-footer>
     <script type="module" src="http://0.0.0.0:8000/scripts/main.js"></script>
 </body>
 

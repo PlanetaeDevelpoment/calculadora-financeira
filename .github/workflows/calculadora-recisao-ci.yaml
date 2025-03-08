@@ -1,0 +1,48 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Teste Calculadora Recisão
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.24'
+
+    - name: Test
+      run: |
+        cd calculadora-recisao
+        go test -v calculadora/calculadora_test.go
+
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.24'
+
+    - name: Build
+      run: |
+        cd calculadora-recisao
+        go build -v -a -o bootstrap main.go
+        zip deployment.zip bootstrap
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: deployment
+        path: deployment.zip
+
