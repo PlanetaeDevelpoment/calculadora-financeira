@@ -34,6 +34,7 @@ type RequisiçãoResposta struct {
 	SaldoAviso           float64
 	SaldoSalário         float64
 	SaldoFérias          float64
+	SaldoDécimoTerceiro  float64
 	SaldoTotal           float64
 }
 
@@ -48,6 +49,7 @@ func CalcularRecisão(requisição RequisiçãoRecisão) RequisiçãoResposta {
 		SaldoAviso:           CalcularSaldoAviso(requisição.Salário, requisição.AvisoPrevio, requisição.JustaCausa),
 		SaldoSalário:         CalcularSaldoSalário(requisição.Salário, requisição.DataContratação, requisição.DataDemissão, requisição.AvisoPrevio),
 		SaldoFérias:          CalcularSaldoFérias(requisição.Salário, requisição.DataContratação, requisição.DataDemissão, requisição.AvisoPrevio, requisição.FériasVencidas),
+		SaldoDécimoTerceiro:  CalcularSaldoDécimoTerceiro(requisição.Salário, requisição.DataContratação, requisição.DataDemissão, requisição.AvisoPrevio),
 	}
 	resposta.getSaldoTotal()	
 	return resposta

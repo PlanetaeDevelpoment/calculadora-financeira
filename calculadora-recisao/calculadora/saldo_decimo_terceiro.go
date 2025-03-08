@@ -5,7 +5,7 @@ import (
 )
 
 
-func SaldoDécimoTerceiro(salário float64, dataContratação, dataDemissao time.Time, avisoPrevio AvisoPrevio) float64 {
+func CalcularSaldoDécimoTerceiro(salário float64, dataContratação, dataDemissao time.Time, avisoPrevio AvisoPrevio) float64 {
 	mesesTrabalhados := getMesesTrabalhadosDesdeJaneiro(dataDemissao, avisoPrevio)
 	salarioBruto := salário * float64(mesesTrabalhados) / 12
 	return retirarDescontos(salarioBruto)

@@ -117,7 +117,7 @@ func TestSaldoDécimoTerceiro(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf("Teste de saldo de Décimo Terceiro: %+v %+v", tc.salário, tc.avisoPrevio), func(t *testing.T) {
-			got := calculadora.SaldoDécimoTerceiro(tc.salário, tc.dataContratação, tc.dataDemissao, tc.avisoPrevio)
+			got := calculadora.CalcularSaldoDécimoTerceiro(tc.salário, tc.dataContratação, tc.dataDemissao, tc.avisoPrevio)
 			want := tc.saldo
 
 			assertFloatEqual(t, got, want)
