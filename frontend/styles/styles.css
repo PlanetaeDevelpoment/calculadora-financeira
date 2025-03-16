@@ -3,4 +3,16 @@
     cursor: default;
     opacity: 0.6;
     text-decoration: none;    
+    /* background-color: ;
+    color: ; */
 }
+
+body {
+    background-color: #95ce6a;
+}
+
+.full-size-p p {
+    text-align: justify;
+    max-width: none;
+}
+

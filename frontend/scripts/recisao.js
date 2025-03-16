@@ -24,7 +24,7 @@ const exemploResultado = {
     SaldoDécimoTerceiro: 0,
     SaldoTotal: 2639.427004371296
 }
-const backendUrl = 'http://0.0.0.0:8000';
+const backendUrl = 'https://tsowo4cg2uqbjf6rc6palclojm0phyrg.lambda-url.us-east-1.on.aws/';
 
 async function interceptSubmit(event) {
     event.preventDefault();

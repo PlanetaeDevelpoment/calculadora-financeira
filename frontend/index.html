@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://assets.ubuntu.com/v1/vanilla-framework-version-4.21.0.min.css" />
+    <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/styles.css">
     <title>Calculadora Financeira</title>
 </head>
@@ -12,9 +13,9 @@
 <body>
     <app-header></app-header>
     <main class="vanilla-grid">
-        <div class="row--25-75">
-            <div class="col">
-                <section>
+        <div class="row--25-75" style="margin-left: 0px;">
+            <div class="col" style="background-color: #e9a9e9; padding: 20px;">
+                <section class="full-size-p">
                     <h1>Cálculos Financeiros</h1>
                     <p>
                         Bem-vindo ao nosso site de cálculos financeiros!
@@ -41,8 +42,10 @@
                             href="https://github.com/PlanetaeDevelpoment/calculadora-financeira">Faça um fork!</a>
                     </p>
                 </section>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Simple_calculator.svg"
+                    alt="Calculadora.svg" style="max-width: 300px;">
                 <section>
-                    <h2>Nossos Cálculos</h2>
+                    <h1>Nossos Cálculos</h2>
                     <ul>
                         <li><a href="./calculadora-recisao.html">Cálculo de Recisão</a></li>
                         <li><a style="color: black;" class="disabled" href="./calculadora-investimentos.html">Cálculo de
@@ -54,7 +57,7 @@
             </div>
         </div>
     </main> <app-footer></app-footer>
-    <script type="module" src="http://0.0.0.0:8000/scripts/main.js"></script>
+    <script type="module" src="scripts/main.js"></script>
 </body>
 
 </html>
